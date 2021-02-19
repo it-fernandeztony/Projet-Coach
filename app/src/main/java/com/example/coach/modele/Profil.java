@@ -1,6 +1,8 @@
 package com.example.coach.modele;
 
-public class Profil {
+import java.io.Serializable;
+
+public class Profil implements Serializable {
 
     private static final Integer minFemme = 15;
     private static final Integer maxFemme = 30;
@@ -57,12 +59,14 @@ public class Profil {
      * Méthode pour affecter une valeur au message en fonction de l'IMG
      */
     private void resultIMG() {
-        if (((img < minFemme) && (sexe == 0)) || ((img < minHomme) && (sexe == 1)))
+        if (((img < minFemme) && (sexe == 0)) || ((img < minHomme) && (sexe == 1))) {
             message = "trop faible";
-        else
-            if (((img > maxFemme)&&(sexe == 0)) || ((img > maxHomme) && (sexe == 1)))
-                message = "trop élevé";
-            else
-                message = "normal";
+        }
+        else if (((img > maxFemme)&&(sexe == 0)) || ((img > maxHomme) && (sexe == 1))) {
+            message = "trop élevé";
+        }
+            else {
+            message = "normal";
+        }
     }
 }
